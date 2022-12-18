@@ -8,6 +8,7 @@ defmodule TuitsviewWeb.Router do
     plug :put_root_layout, {TuitsviewWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug TuitsviewWeb.Plugs.Locale, "en"
   end
 
   pipeline :api do
