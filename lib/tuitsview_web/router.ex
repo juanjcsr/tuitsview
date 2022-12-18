@@ -18,6 +18,9 @@ defmodule TuitsviewWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/stats", StatsController, :index
+    get "/stats/:action", StatsController, :show
   end
 
   # Other scopes may use custom stacks.
