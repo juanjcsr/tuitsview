@@ -1,6 +1,6 @@
-defmodule Tuitsview.TuitAuthor do
+defmodule Tuitsview.Tuit.TuitAuthor do
   use Ecto.Schema
-  alias Tuitsview.TuitAuthor
+  # import Ecto.Changeset
 
   @primary_key {:id, :string, []}
   schema "authors" do
@@ -15,6 +15,13 @@ defmodule Tuitsview.TuitAuthor do
     field :profile_image_url, :string
     field :inserted_at, :naive_datetime
 
-    has_many :extended_tuit, Tuitsview.TuitData, foreign_key: :author_id
+    has_many :extended_tuit, Tuitsview.Tuit.TuitData, foreign_key: :author_id
   end
+
+  # @doc false
+  # def changeset(tuit_author, attrs) do
+  #   tuit_author
+  #   |> cast(attrs, [:name])
+  #   |> validate_required([:name])
+  # end
 end

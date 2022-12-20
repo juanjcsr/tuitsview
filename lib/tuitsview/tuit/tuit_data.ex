@@ -1,4 +1,4 @@
-defmodule Tuitsview.TuitData do
+defmodule Tuitsview.Tuit.TuitData do
   use Ecto.Schema
 
   @primary_key {:id, :string, []}
@@ -13,6 +13,6 @@ defmodule Tuitsview.TuitData do
     field :raw_tuit_id, :string
     field :inserted_at, :naive_datetime
 
-    belongs_to :author, Tuitsview.TuitAuthor
+    belongs_to :author, Tuitsview.Tuit.TuitAuthor
   end
 end
