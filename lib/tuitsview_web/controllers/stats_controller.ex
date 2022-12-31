@@ -2,7 +2,8 @@ defmodule TuitsviewWeb.StatsController do
   use TuitsviewWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    authors = Tuitsview.Tuit.top_author_tuits()
+    render(conn, "index.html", authors: authors)
   end
 
   def show(conn, %{"action" => action}) do

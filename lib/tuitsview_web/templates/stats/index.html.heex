@@ -1,3 +1,17 @@
 <section class="phx-hero">
     <h2>Holaaaa</h2>
 </section>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+        </tr>
+    <%= for author <- @authors do %>
+        <tr>
+            <td><%= author.author.name %></td>
+            <td><%= author.count_tuits %></td>
+        </tr>
+    <% end %>
+    </table>
+</div>

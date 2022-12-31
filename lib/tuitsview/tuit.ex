@@ -7,6 +7,7 @@ defmodule Tuitsview.Tuit do
   alias Tuitsview.TuitsRepo
 
   alias Tuitsview.Tuit.TuitAuthor
+  alias Tuitsview.Tuit.TuitData
 
   @doc """
   Returns the list of authors.
@@ -20,6 +21,26 @@ defmodule Tuitsview.Tuit do
   def list_authors do
     TuitsRepo.all(TuitAuthor)
   end
+
+  def top_author_tuits do
+    # query = from p in TuitAuthor,
+    #           join: c in assoc(p, :extended_tuit),
+    #           group_by: [p.id, c.author_id],
+    #           where: p.id == c.author_id,
+    #           select: %{author: p, count_tuits: count(p.id)}
+    TuitAuthor
+    |> join(:inner, [a], p in TuitData, on: a.id == p.author_id)
+    |> group_by([a,p],[a.id, p.author_id])
+    |> select([a, p], %{
+        author: a,
+        count_tuits: fragment("count(?) as count_tuits", p.id)
+      })
+    |> order_by(desc: fragment("count_tuits"))
+    |> TuitsRepo.all()
+    # TuitsRepo.all(query)
+  end
+
+
 
   @doc """
   Gets a single tuit_author.

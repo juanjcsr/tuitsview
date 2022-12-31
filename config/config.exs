@@ -8,7 +8,7 @@
 import Config
 
 config :tuitsview,
-  ecto_repos: [Tuitsview.Repo, Tuitsbiew.TuitsRepo]
+  ecto_repos: [Tuitsview.Repo, Tuitsview.TuitsRepo]
 
 # Configures the endpoint
 config :tuitsview, TuitsviewWeb.Endpoint,
