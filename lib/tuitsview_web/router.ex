@@ -22,6 +22,7 @@ defmodule TuitsviewWeb.Router do
 
     get "/stats", StatsController, :index
     get "/stats/:action", StatsController, :show
+    get "/stats/author/:id", StatsController, :show_author
   end
 
   # Other scopes may use custom stacks.

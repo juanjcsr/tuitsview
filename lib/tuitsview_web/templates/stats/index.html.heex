@@ -9,7 +9,7 @@
         </tr>
     <%= for author <- @authors do %>
         <tr>
-            <td><%= author.author.name %></td>
+            <td><%= link author.author.name, to: "/stats/author/#{author.author.id}" %></td>
             <td><%= author.count_tuits %></td>
         </tr>
     <% end %>

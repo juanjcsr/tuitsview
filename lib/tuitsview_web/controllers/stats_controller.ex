@@ -1,5 +1,6 @@
 defmodule TuitsviewWeb.StatsController do
   use TuitsviewWeb, :controller
+  alias Tuitsview.Tuit
 
   def index(conn, _params) do
     authors = Tuitsview.Tuit.top_author_tuits()
@@ -14,4 +15,10 @@ defmodule TuitsviewWeb.StatsController do
     #|> put_root_layout(false)
     |> render("show.html")
   end
+
+  def show_author(conn, %{"id" => id}) do
+    author = Tuit.get_tuit_author!(id)
+    render(conn, "show_author.html", author: author)
+  end
+
 end

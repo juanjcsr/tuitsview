@@ -9,6 +9,8 @@ defmodule Tuitsview.Tuit do
   alias Tuitsview.Tuit.TuitAuthor
   alias Tuitsview.Tuit.TuitData
 
+  @authors_per_page 20
+
   @doc """
   Returns the list of authors.
 
@@ -36,6 +38,7 @@ defmodule Tuitsview.Tuit do
         count_tuits: fragment("count(?) as count_tuits", p.id)
       })
     |> order_by(desc: fragment("count_tuits"))
+    |> limit(30)
     |> TuitsRepo.all()
     # TuitsRepo.all(query)
   end
