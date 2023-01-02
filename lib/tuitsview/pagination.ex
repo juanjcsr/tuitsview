@@ -2,6 +2,8 @@ defmodule Tuitsview.Pagination do
   import Ecto.Query
   alias Tuitsview.TuitsRepo
 
+  #https://alchemist.camp/episodes/zero-dependency-pagination
+
   def query(query, page, per_page: per_page) when is_binary(page) do
     query(query, String.to_integer(page), per_page: per_page)
   end
